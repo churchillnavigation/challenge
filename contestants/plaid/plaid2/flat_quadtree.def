@@ -1,0 +1,6 @@
+LIBRARY "flat_quadtree.dll"
+
+EXPORTS
+    create  @1
+    destroy @2
+    search  @3

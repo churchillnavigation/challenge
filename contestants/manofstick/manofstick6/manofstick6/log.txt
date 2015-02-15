@@ -1,0 +1,21 @@
+--- Churchill Navigation Point Search Challenge ---
+Point count  : 10000
+Query count  : 1000
+Result count : 20
+Random seed  : 4A01DF69-4089B139-4A01DF69-505AF7EF-61C930B9
+
+Loading algorithms:
+Loading C:\churchill\challenge\manofstick3\x64\Debug\manofstick6.dll... Success.
+1 algorithms loaded.
+
+Preparing 10000 random points...done (0.6110ms).
+Preparing 1000 random queries...done (0.0280ms).
+
+Testing algorithm #0 (manofstick6.dll):
+Robustness check...done.
+Loading points...done (807.5360ms).
+Making queries...done (53.4490ms, avg 0.0534ms/query).
+Release points...done (memory used: 6MB).
+
+Comparing the results of algorithms: There's nothing to compare to, load more DLLs!
+Cleaning up resources...done.

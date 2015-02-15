@@ -1,0 +1,126 @@
+
+MAKEFILE      = Makefile.Release
+
+####### Compiler, tools and options
+
+CC            = cl
+CXX           = cl
+DEFINES       = -DUNICODE -DWIN32 -DWIN64 -DSCHULTZSOFTWARESOLUTIONS_LIBRARY -DNDEBUG
+CFLAGS        = -nologo -Zm200 -Zc:wchar_t -FS -O2 -MD -W3 $(DEFINES)
+CXXFLAGS      = -nologo -Zm200 -Zc:wchar_t -FS -O2 -MD -GR -W3 -w34100 -w34189 -EHsc $(DEFINES)
+INCPATH       = -I"."
+LINKER        = link
+LFLAGS        = /NOLOGO /DYNAMICBASE /NXCOMPAT /INCREMENTAL:NO /DLL
+LIBS          =         
+QMAKE         = qmake.exe
+IDC           = idc
+IDL           = midl
+ZIP           = zip -r -9
+DEF_FILE      = 
+RES_FILE      = 
+COPY          = copy /y
+SED           = $(QMAKE) -install sed
+COPY_FILE     = $(COPY)
+COPY_DIR      = xcopy /s /q /y /i
+DEL_FILE      = del
+DEL_DIR       = rmdir
+MOVE          = move
+CHK_DIR_EXISTS= if not exist
+MKDIR         = mkdir
+INSTALL_FILE    = $(COPY_FILE)
+INSTALL_PROGRAM = $(COPY_FILE)
+INSTALL_DIR     = $(COPY_DIR)
+
+####### Output directory
+
+OBJECTS_DIR   = release
+
+####### Files
+
+SOURCES       = SchultzReference.cpp 
+OBJECTS       = release\SchultzReference.obj
+
+DESTDIR        = release\ #avoid trailing-slash linebreak
+TARGET         = SelenatorIgnition.dll
+DESTDIR_TARGET = release\SelenatorIgnition.dll
+
+####### Implicit rules
+
+.SUFFIXES: .c .cpp .cc .cxx
+
+{.}.cpp{release\}.obj::
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
+	$<
+<<
+
+{.}.cc{release\}.obj::
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
+	$<
+<<
+
+{.}.cxx{release\}.obj::
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
+	$<
+<<
+
+{.}.c{release\}.obj::
+	$(CC) -c $(CFLAGS) $(INCPATH) -Forelease\ @<<
+	$<
+<<
+
+####### Build rules
+
+first: all
+all: Makefile.Release  initdir $(DESTDIR_TARGET)
+
+.PHONY: initdir
+
+initdir:
+	-$(CHK_DIR_EXISTS) $(DESTDIR) $(MKDIR) $(DESTDIR)
+
+$(DESTDIR_TARGET):  $(OBJECTS) 
+	$(LINKER) $(LFLAGS) /MANIFEST /MANIFESTFILE:release\SelenatorIgnition.dll.embed.manifest /OUT:$(DESTDIR_TARGET) @<<
+$(OBJECTS) $(LIBS)
+<<
+	mt.exe /nologo /manifest release\SelenatorIgnition.dll.embed.manifest /outputresource:$(DESTDIR_TARGET);2
+
+clean: compiler_clean 
+	-$(DEL_FILE) release\SchultzReference.obj
+	-$(DEL_FILE) release\SelenatorIgnition.dll
+	-$(DEL_FILE) release\SelenatorIgnition.lib
+	-$(DEL_FILE) release\SelenatorIgnition.exp
+	-$(DEL_FILE) release\SelenatorIgnition.dll.embed.manifest
+	-$(DEL_DIR) release
+
+distclean: clean 
+	-$(DEL_FILE) $(DESTDIR_TARGET)
+	-$(DEL_FILE) Makefile.Release
+
+check: first
+
+compiler_no_pch_compiler_make_all:
+compiler_no_pch_compiler_clean:
+compiler_yacc_decl_make_all:
+compiler_yacc_decl_clean:
+compiler_yacc_impl_make_all:
+compiler_yacc_impl_clean:
+compiler_lex_make_all:
+compiler_lex_clean:
+compiler_clean: 
+
+
+
+####### Compile
+
+release\SchultzReference.obj: SchultzReference.cpp SchultzReference.h \
+		schultzreference_global.h \
+		point_search.h
+
+####### Install
+
+install:   FORCE
+
+uninstall:   FORCE
+
+FORCE:
+

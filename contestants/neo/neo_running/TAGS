@@ -1,0 +1,193 @@
+
+neo/point_search.cxx,8254
+bool almostEqual(21,487
+inline int iround(48,1226
+class ObjAllocator52,1409
+    ObjAllocator(ObjAllocator::ObjAllocator55,1441
+    ~ObjAllocator(ObjAllocator::~ObjAllocator65,1715
+    T *alloc(ObjAllocator::alloc71,1841
+    void free(ObjAllocator::free82,2077
+    uint32_t num_alloc(ObjAllocator::num_alloc91,2244
+    void new_block(ObjAllocator::new_block94,2315
+    uint32_t    _batch_size;ObjAllocator::_batch_size111,2739
+    T          *_free_list;ObjAllocator::_free_list112,2769
+    vector<T *> _blocks;ObjAllocator::_blocks113,2798
+    uint32_t    _num_allocated;ObjAllocator::_num_allocated114,2824
+class vec2118,2946
+    vec2(vec2::vec2121,2970
+    vec2(vec2::vec2122,2985
+    vec2 operator+(vec2::operator+124,3035
+    vec2 operator-(vec2::operator-125,3111
+    vec2 operator*(vec2::operator*127,3189
+    void set_min(vec2::set_min129,3257
+    void set_max(vec2::set_max130,3310
+    float x,vec2::x132,3365
+    float x, y;vec2::y132,3365
+class vec2r136,3471
+    vec2r(vec2r::vec2r139,3496
+    vec2r(vec2r::vec2r140,3512
+    vec2r operator+(vec2r::operator+142,3582
+    vec2r operator-(vec2r::operator-143,3670
+    vec2r operator*(vec2r::operator*145,3760
+    float     x,vec2r::x147,3845
+    float     x, y;vec2r::y147,3845
+    int32_t   r;vec2r::r148,3866
+struct Pt152,3987
+    Pt(Pt::Pt154,4001
+    Pt(Pt::Pt155,4014
+    void copy(Pt::copy157,4082
+    float     x,Pt::x159,4161
+    float     x, y;Pt::y159,4161
+    int32_t   r;Pt::r160,4182
+    int8_t   _id;Pt::_id161,4214
+struct PtCompareR165,4322
+    bool operator()(PtCompareR::operator()167,4344
+class Box171,4508
+    Box(Box::Box174,4531
+    void reset(Box::reset176,4584
+    void add(Box::add178,4640
+    Box divide(Box::divide187,4855
+    float area(Box::area206,5219
+    vec2 _min;Box::_min217,5610
+    vec2 _max;Box::_max218,5627
+enum intersect_code222,5770
+    ic_outside,intersect_code::ic_outside224,5794
+    ic_partial,intersect_code::ic_partial225,5811
+    ic_insideintersect_code::ic_inside226,5828
+class Target230,5932
+    Target(Target::Target233,5958
+    Target(Target::Target235,5977
+    inline intersect_code intersect(Target::intersect240,6111
+    inline float intersection_area(Target::intersection_area255,6631
+    inline bool contains(Target::contains262,6862
+    float area(Target::area268,7021
+    inline const uint32_t count(Target::count273,7116
+    vec2     _min;Target::_min276,7188
+    vec2     _max;Target::_max277,7209
+    uint32_t _count;Target::_count278,7229
+class PointSetBaseFwd284,7349
+    PointSetBaseFwd(PointSetBaseFwd::PointSetBaseFwd287,7384
+    ~PointSetBaseFwd(PointSetBaseFwd::~PointSetBaseFwd294,7576
+    void reset(PointSetBaseFwd::reset299,7646
+    inline int32_t nth_rank(PointSetBaseFwd::nth_rank312,7974
+    inline int32_t nth_rank_no_check(PointSetBaseFwd::nth_rank_no_check317,8095
+    uint32_t size(PointSetBaseFwd::size326,8309
+    bool _insert(PointSetBaseFwd::_insert332,8538
+    void _insert(PointSetBaseFwd::_insert357,9027
+    void _push_back(PointSetBaseFwd::_push_back384,9683
+    uint32_t  _count;PointSetBaseFwd::_count390,9777
+    uint32_t  _size;PointSetBaseFwd::_size391,9800
+    const int _num_counts PointSetBaseFwd::_num_counts394,9834
+    Pt       *_begin;PointSetBaseFwd::_begin396,9880
+    Pt       *_point_array;PointSetBaseFwd::_point_array397,9903
+    uint32_t  _array_size;PointSetBaseFwd::_array_size398,9932
+class PointSetBaseBack402,10049
+    PointSetBaseBack(PointSetBaseBack::PointSetBaseBack405,10085
+    ~PointSetBaseBack(PointSetBaseBack::~PointSetBaseBack413,10290
+    PointSetBaseBack& operator=(PointSetBaseBack::operator=418,10361
+    void reset(PointSetBaseBack::reset428,10624
+    inline int32_t nth_rank(PointSetBaseBack::nth_rank441,11021
+    inline int32_t nth_rank_no_check(PointSetBaseBack::nth_rank_no_check446,11142
+    uint32_t size(PointSetBaseBack::size455,11356
+    bool _insert(PointSetBaseBack::_insert461,11585
+    void _insert(PointSetBaseBack::_insert487,12113
+    inline void _push_back(PointSetBaseBack::_push_back522,13030
+    const int _num_counts PointSetBaseBack::_num_counts529,13191
+    void _rewind(PointSetBaseBack::_rewind531,13238
+    uint32_t  _size;PointSetBaseBack::_size542,13494
+    uint32_t  _count;PointSetBaseBack::_count543,13516
+    Pt       *_begin;PointSetBaseBack::_begin546,13551
+    Pt       *_point_array;PointSetBaseBack::_point_array547,13574
+    uint32_t  _array_size;PointSetBaseBack::_array_size548,13603
+class PointSet 554,13851
+    PointSet(PointSet::PointSet557,13905
+    int add_multiple(PointSet::add_multiple563,14098
+    int add_multiple(PointSet::add_multiple625,16201
+class PointSet 659,17156
+    PointSet(PointSet::PointSet662,17204
+    int add_multiple(PointSet::add_multiple670,17409
+    void pf(PointSet::pf730,19198
+    int add_multiple(PointSet::add_multiple737,19397
+    int32_t nth_rank(PointSet::nth_rank784,20913
+    void reset(PointSet::reset790,21120
+    inline void _insert(PointSet::_insert797,21224
+    inline void _insert(PointSet::_insert805,21449
+    uint32_t _count;PointSet::_count811,21585
+struct SearchContext 819,21842
+    typedef QuadTree<const Point*> Qt;SearchContext::Qt821,21868
+    SearchContext(SearchContext::SearchContext823,21910
+    void reset(SearchContext::reset829,22070
+    void add(SearchContext::add835,22189
+    uintptr_t num_points(SearchContext::num_points837,22250
+    uintptr_t          _num_points;SearchContext::_num_points841,22328
+    PointSet           _pointset;SearchContext::_pointset842,22407
+    vector<const Qt *> _qt_partial;SearchContext::_qt_partial843,22498
+static uint32_t s_max_leaf 846,22597
+static uint32_t s_cell_size1 847,22630
+static uint32_t s_cell_size2 848,22670
+static uint32_t s_depth_threshold 849,22709
+static int      s_num_threads 850,22750
+static int      s_filter 851,22786
+static float    s_area_filter_lb 852,22817
+static float    s_area_filter_hb 853,22861
+struct CellInfo857,22996
+    CellInfo(CellInfo::CellInfo859,23016
+    float    _area;CellInfo::_area861,23107
+    uint32_t _num_points;CellInfo::_num_points862,23128
+class QuadTree871,23442
+    QuadTree(QuadTree::QuadTree875,23551
+    QuadTree(QuadTree::QuadTree892,24121
+    QuadTree(QuadTree::QuadTree900,24393
+    ~QuadTree(QuadTree::~QuadTree912,24800
+    void populate_cell_info(QuadTree::populate_cell_info919,24978
+    void subdivide(QuadTree::subdivide932,25456
+    int search(QuadTree::search1006,27965
+    int search(QuadTree::search1059,29860
+    int search_partial(QuadTree::search_partial1110,31554
+    void *operator new(QuadTree::operator new1126,32065
+    void operator delete(QuadTree::operator delete1127,32131
+    float ia(QuadTree::ia1129,32204
+    int _fill(QuadTree::_fill1135,32507
+    unsigned char _quadrant(QuadTree::_quadrant1157,33294
+    void _add_point(QuadTree::_add_point1163,33532
+    QuadTree     *_child[QuadTree::_child1168,33621
+    Box           _box;QuadTree::_box1169,33651
+    vector<Pt>    _points;QuadTree::_points1170,33676
+    int32_t       _min_rank;QuadTree::_min_rank1171,33704
+    uint32_t      _leaf;QuadTree::_leaf1172,33773
+    mutable float _intersection_area;QuadTree::_intersection_area1173,33799
+    static ObjAllocator<QuadTree> _allocator;QuadTree::_allocator1176,33849
+class Search 1185,34217
+    Search(Search::Search1190,34353
+    int32_t search(Search::search1227,35802
+    QuadTree<qtidx_t>  _ot;Search::_ot1282,37837
+    float              _median_leaf_cell_area;Search::_median_leaf_cell_area1283,37866
+    float              _center_average_area;Search::_center_average_area1284,37914
+void get_from_environment(1289,38069
+const uintptr_t pointcount_threshold 1298,38213
+extern "C" __declspec(1301,38397
+extern "C" __declspec(1322,39336
+extern "C" __declspec(1341,39892
+struct S 1363,40404
+    S(S::S1365,40440
+    void sort(S::sort1367,40477
+    void print(S::print1372,40578
+    vector<float> areas;S::areas1377,40691
+extern "C" __declspec(1381,40806
+extern "C" __declspec(1390,41077
+extern "C" __declspec(1402,41407
+
+point_search.h,425
+struct Point16,921
+	int8_t  id;Point::id18,938
+	int32_t rank;Point::rank19,952
+	float   x;Point::x20,968
+	float   y;Point::y21,981
+struct Rect25,1120
+	float lx;Rect::lx27,1136
+	float ly;Rect::ly28,1148
+	float hx;Rect::hx29,1160
+	float hy;Rect::hy30,1172
+typedef SearchContext* (__stdcall* T_create)42,1699
+typedef int32_t (__stdcall* T_search)48,2065
+typedef SearchContext* (__stdcall* T_destroy)52,2289

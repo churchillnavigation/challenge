@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LocalDebuggerCommand>C:\SCRATCH\2_code\vs\challenge.vs2012\challenge.x64\x64\Release\point_search.exe</LocalDebuggerCommand>
+    <LocalDebuggerCommandArguments>challenge.x64.dll -p5000000 -t7 -s2322C910-29AAA740-2322C910-3979E196-8EA26C0</LocalDebuggerCommandArguments>
+    <LocalDebuggerWorkingDirectory>..\x64\Debug</LocalDebuggerWorkingDirectory>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+  </PropertyGroup>
+</Project>

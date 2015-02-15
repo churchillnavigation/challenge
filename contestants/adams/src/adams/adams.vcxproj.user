@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ShowAllFiles>false</ShowAllFiles>
+    <LocalDebuggerCommand Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Temp\challenge\point_search.exe</LocalDebuggerCommand>
+    <LocalDebuggerCommand Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Temp\challenge\point_search.exe</LocalDebuggerCommand>
+    <LocalDebuggerCommandArguments Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\debug\adams.dll -p10000000 -q10 -r20</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\x64\debug\adams.dll  -p1000000 -q10 -r20 -s89BA8805-8332E655-89BA8805-93E1A083-A27267D4</LocalDebuggerCommandArguments>
+    <DebuggerFlavor Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">WindowsLocalDebugger</DebuggerFlavor>
+    <DebuggerFlavor Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">WindowsLocalDebugger</DebuggerFlavor>
+    <LocalDebuggerDebuggerType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Auto</LocalDebuggerDebuggerType>
+    <LocalDebuggerDebuggerType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Auto</LocalDebuggerDebuggerType>
+    <LocalDebuggerCommand Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Temp\challenge\point_search.exe</LocalDebuggerCommand>
+    <LocalDebuggerCommandArguments Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\x64\release\adams.dll -p100000 -q100000 -r2000 -sF9F38C25-F37BE275-F9F38C25-E3A8A4A3-D23B63F5</LocalDebuggerCommandArguments>
+    <DebuggerFlavor Condition="'$(Configuration)|$(Platform)'=='Release|x64'">WindowsLocalDebugger</DebuggerFlavor>
+  </PropertyGroup>
+</Project>

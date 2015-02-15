@@ -1,0 +1,5 @@
+LIBRARY	libftl_search.dll
+EXPORTS
+create
+search
+destroy

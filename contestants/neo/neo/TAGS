@@ -1,0 +1,1051 @@
+
+neo/cpp-btree/btree.h,29280
+#define UTIL_BTREE_BTREE_H__45,2389
+#define NDEBUG 63,2731
+    typedef int64_t ssize_t;68,2794
+namespace btree 71,2834
+inline void btree_swap_helper(btree::btree_swap_helper81,3363
+template<bool cond,87,3514
+template<bool cond, typename A,87,3514
+struct if_{if_88,3559
+  typedef A type;if_::type89,3572
+template<typename A,92,3597
+  typedef B type;94,3658
+typedef char small_;98,3756
+struct big_ 100,3780
+  char dummy[big_::dummy101,3795
+struct CompileAssert 106,3866
+#define COMPILE_ASSERT(109,3896
+struct btree_key_compare_to_tag 124,4466
+struct btree_is_key_compare_to130,4641
+struct btree_key_compare_to_adapter 143,5291
+  btree_key_compare_to_adapter(btree_key_compare_to_adapter::btree_key_compare_to_adapter144,5340
+  btree_key_compare_to_adapter(btree_key_compare_to_adapter::btree_key_compare_to_adapter145,5378
+  btree_key_compare_to_adapter(btree_key_compare_to_adapter::btree_key_compare_to_adapter146,5445
+struct btree_key_compare_to_adapter<btree_key_compare_to_adapter152,5571
+  btree_key_compare_to_adapter(btree_key_compare_to_adapter::btree_key_compare_to_adapter154,5674
+  btree_key_compare_to_adapter(btree_key_compare_to_adapter::btree_key_compare_to_adapter155,5711
+  btree_key_compare_to_adapter(btree_key_compare_to_adapter::btree_key_compare_to_adapter156,5777
+  int operator()(btree_key_compare_to_adapter::operator()158,5882
+struct btree_key_compare_to_adapter<btree_key_compare_to_adapter164,6002
+  btree_key_compare_to_adapter(btree_key_compare_to_adapter::btree_key_compare_to_adapter166,6108
+  btree_key_compare_to_adapter(btree_key_compare_to_adapter::btree_key_compare_to_adapter167,6145
+  btree_key_compare_to_adapter(btree_key_compare_to_adapter::btree_key_compare_to_adapter168,6214
+  int operator()(btree_key_compare_to_adapter::operator()170,6322
+template <typename Key,178,6599
+template <typename Key, typename Compare,178,6599
+struct btree_key_comparer 179,6662
+  btree_key_comparer(btree_key_comparer::btree_key_comparer180,6691
+  btree_key_comparer(btree_key_comparer::btree_key_comparer181,6718
+  static bool bool_compare(btree_key_comparer::bool_compare182,6764
+  bool operator()(btree_key_comparer::operator()185,6872
+  Compare comp;btree_key_comparer::comp188,6970
+template <typename Key,194,7178
+  btree_key_comparer(196,7270
+  btree_key_comparer(197,7297
+  static bool bool_compare(198,7343
+  bool operator()(operator()201,7455
+  Compare comp;204,7553
+template <typename Key,211,7866
+static bool btree_compare_keys(212,7909
+      btree_is_key_compare_to<Compare>::value> key_comparer;215,8042
+template <typename Key,219,8159
+template <typename Key, typename Compare,219,8159
+          typename Alloc,220,8202
+          typename Alloc, int TargetNodeSize,220,8202
+struct btree_common_params 221,8264
+  typedef typename if_<btree_common_params::if_225,8527
+    Compare, btree_key_compare_to_adapter<Compare> >::type key_compare;btree_common_params::key_compare227,8598
+  typedef btree_is_key_compare_to<key_compare> is_key_compare_to;btree_common_params::is_key_compare_to230,8778
+  typedef Alloc allocator_type;btree_common_params::allocator_type232,8847
+  typedef Key key_type;btree_common_params::key_type233,8880
+  typedef ssize_t size_type;btree_common_params::size_type234,8905
+  typedef ptrdiff_t difference_type;btree_common_params::difference_type235,8935
+    kTargetNodeSize btree_common_params::kTargetNodeSize238,8985
+    kTargetNodeSize = TargetNodeSize,btree_common_params::TargetNodeSize238,8985
+    kNodeValueSpace btree_common_params::kNodeValueSpace242,9150
+    kNodeValueSpace = TargetNodeSize btree_common_params::TargetNodeSize242,9150
+    kNodeValueSpace = TargetNodeSize - 2 * sizeof(btree_common_params::sizeof242,9150
+    kNodeValueSpace = TargetNodeSize - 2 * sizeof(void*btree_common_params::void242,9150
+  typedef typename if_<btree_common_params::if_247,9344
+template <typename Key,254,9546
+template <typename Key, typename Data,254,9546
+template <typename Key, typename Data, typename Compare,254,9546
+          typename Alloc,255,9604
+struct btree_map_params256,9651
+  typedef Data data_type;btree_map_params::data_type259,9811
+  typedef Data mapped_type;btree_map_params::mapped_type260,9838
+  typedef std::pair<const Key,btree_map_params::Key261,9867
+  typedef std::pair<const Key, data_type> value_type;btree_map_params::value_type261,9867
+  typedef std::pair<Key,btree_map_params::Key262,9922
+  typedef std::pair<Key, data_type> mutable_value_type;btree_map_params::mutable_value_type262,9922
+  typedef value_type* pointer;btree_map_params::pointer263,9979
+  typedef const value_type* const_pointer;btree_map_params::const_pointer264,10011
+  typedef value_type& reference;btree_map_params::reference265,10055
+  typedef const value_type& const_reference;btree_map_params::const_reference266,10089
+    kValueSize btree_map_params::kValueSize269,10147
+    kValueSize = sizeof(btree_map_params::sizeof269,10147
+    kValueSize = sizeof(Key)btree_map_params::Key269,10147
+    kValueSize = sizeof(Key) + sizeof(btree_map_params::sizeof269,10147
+    kValueSize = sizeof(Key) + sizeof(data_type)btree_map_params::data_type269,10147
+  static const Key& key(btree_map_params::key272,10206
+  static const Key& key(btree_map_params::key273,10272
+  static void swap(btree_map_params::swap274,10346
+template <typename Key,281,10591
+template <typename Key, typename Compare,281,10591
+template <typename Key, typename Compare, typename Alloc,281,10591
+struct btree_set_params282,10670
+  typedef std::false_type data_type;btree_set_params::data_type285,10815
+  typedef std::false_type mapped_type;btree_set_params::mapped_type286,10853
+  typedef Key value_type;btree_set_params::value_type287,10893
+  typedef value_type mutable_value_type;btree_set_params::mutable_value_type288,10920
+  typedef value_type* pointer;btree_set_params::pointer289,10962
+  typedef const value_type* const_pointer;btree_set_params::const_pointer290,10994
+  typedef value_type& reference;btree_set_params::reference291,11038
+  typedef const value_type& const_reference;btree_set_params::const_reference292,11072
+    kValueSize btree_set_params::kValueSize295,11130
+    kValueSize = sizeof(btree_set_params::sizeof295,11130
+    kValueSize = sizeof(Key)btree_set_params::Key295,11130
+  static const Key& key(btree_set_params::key298,11169
+  static void swap(btree_set_params::swap299,11229
+template <typename Key,306,11450
+struct btree_upper_bound_adapter 307,11493
+  btree_upper_bound_adapter(btree_upper_bound_adapter::btree_upper_bound_adapter308,11546
+  bool operator()(btree_upper_bound_adapter::operator()309,11602
+template <typename Key,314,11723
+struct btree_upper_bound_compare_to_adapter 315,11768
+  btree_upper_bound_compare_to_adapter(btree_upper_bound_compare_to_adapter::btree_upper_bound_compare_to_adapter316,11834
+  int operator()(btree_upper_bound_compare_to_adapter::operator()317,11905
+template <typename K,323,12096
+template <typename K, typename N,323,12096
+struct btree_linear_search_plain_compare 324,12149
+  static int lower_bound(btree_linear_search_plain_compare::lower_bound325,12193
+  static int upper_bound(btree_linear_search_plain_compare::upper_bound328,12331
+    typedef btree_upper_bound_adapter<K, Compare> upper_compare;btree_linear_search_plain_compare::upper_compare329,12398
+template <typename K,335,12622
+template <typename K, typename N,335,12622
+struct btree_linear_search_compare_to 336,12677
+  static int lower_bound(btree_linear_search_compare_to::lower_bound337,12718
+  static int upper_bound(btree_linear_search_compare_to::upper_bound340,12855
+        btree_key_comparer<K, CompareTo, true> > upper_compare;btree_linear_search_compare_to::upper_compare342,12966
+template <typename K,348,13193
+template <typename K, typename N,348,13193
+struct btree_binary_search_plain_compare 349,13246
+  static int lower_bound(btree_binary_search_plain_compare::lower_bound350,13290
+  static int upper_bound(btree_binary_search_plain_compare::upper_bound353,13428
+    typedef btree_upper_bound_adapter<K, Compare> upper_compare;btree_binary_search_plain_compare::upper_compare354,13495
+template <typename K,360,13720
+template <typename K, typename N,360,13720
+struct btree_binary_search_compare_to 361,13775
+  static int lower_bound(btree_binary_search_compare_to::lower_bound362,13816
+  static int upper_bound(btree_binary_search_compare_to::upper_bound365,13960
+        btree_key_comparer<K, CompareTo, true> > upper_compare;btree_binary_search_compare_to::upper_compare367,14071
+class btree_node 376,14473
+  typedef Params params_type;btree_node::params_type378,14503
+  typedef btree_node<Params> self_type;btree_node::self_type379,14534
+  typedef typename Params::key_type key_type;btree_node::key_type380,14575
+  typedef typename Params::data_type data_type;btree_node::data_type381,14622
+  typedef typename Params::value_type value_type;btree_node::value_type382,14671
+  typedef typename Params::mutable_value_type mutable_value_type;btree_node::mutable_value_type383,14722
+  typedef typename Params::pointer pointer;btree_node::pointer384,14789
+  typedef typename Params::const_pointer const_pointer;btree_node::const_pointer385,14834
+  typedef typename Params::reference reference;btree_node::reference386,14891
+  typedef typename Params::const_reference const_reference;btree_node::const_reference387,14940
+  typedef typename Params::key_compare key_compare;btree_node::key_compare388,15001
+  typedef typename Params::size_type size_type;btree_node::size_type389,15054
+  typedef typename Params::difference_type difference_type;btree_node::difference_type390,15103
+    key_type,btree_node::key_type393,15265
+    key_type, self_type,btree_node::self_type393,15265
+    key_type, self_type, key_compare> linear_search_plain_compare_type;btree_node::linear_search_plain_compare_type393,15265
+    key_type,btree_node::key_type395,15381
+    key_type, self_type,btree_node::self_type395,15381
+    key_type, self_type, key_compare> linear_search_compare_to_type;btree_node::linear_search_compare_to_type395,15381
+    key_type,btree_node::key_type397,15497
+    key_type, self_type,btree_node::self_type397,15497
+    key_type, self_type, key_compare> binary_search_plain_compare_type;btree_node::binary_search_plain_compare_type397,15497
+    key_type,btree_node::key_type399,15613
+    key_type, self_type,btree_node::self_type399,15613
+    key_type, self_type, key_compare> binary_search_compare_to_type;btree_node::binary_search_compare_to_type399,15613
+  typedef typename if_<btree_node::if_402,15808
+    linear_search_plain_compare_type>::type linear_search_type;btree_node::linear_search_type405,15908
+  typedef typename if_<btree_node::if_408,16098
+    binary_search_plain_compare_type>::type binary_search_type;btree_node::binary_search_type411,16198
+    std::is_floating_point<key_type>::value,btree_node::value417,16533
+    linear_search_type,btree_node::linear_search_type418,16579
+    linear_search_type, binary_search_type>::type search_type;btree_node::search_type418,16579
+  struct base_fields btree_node::base_fields420,16645
+    typedef typename Params::node_count_type field_type;btree_node::base_fields::field_type421,16669
+    bool leaf;btree_node::base_fields::leaf424,16793
+    field_type position;btree_node::base_fields::position426,16864
+    field_type max_count;btree_node::base_fields::max_count428,16946
+    field_type count;btree_node::base_fields::count430,17028
+    btree_node *parent;btree_node::base_fields::parent432,17091
+    kValueSize btree_node::kValueSize436,17134
+    kValueSize = params_type::kValueSize,btree_node::params_type::kValueSize436,17134
+    kTargetNodeSize btree_node::kTargetNodeSize437,17177
+    kTargetNodeSize = params_type::kTargetNodeSize,btree_node::params_type::kTargetNodeSize437,17177
+    kNodeTargetValues btree_node::kNodeTargetValues440,17293
+    kNodeTargetValues = (kTargetNodeSize btree_node::kTargetNodeSize440,17293
+    kNodeTargetValues = (kTargetNodeSize - sizeof(btree_node::sizeof440,17293
+    kNodeTargetValues = (kTargetNodeSize - sizeof(base_fields)btree_node::base_fields440,17293
+    kNodeTargetValues = (kTargetNodeSize - sizeof(base_fields)) / kValueSize,btree_node::kValueSize440,17293
+    kNodeValues btree_node::kNodeValues444,17593
+    kNodeValues = kNodeTargetValues btree_node::kNodeTargetValues444,17593
+    kNodeValues = kNodeTargetValues >= 3 ? kNodeTargetValues btree_node::kNodeTargetValues444,17593
+    kExactMatch btree_node::kExactMatch446,17662
+    kMatchMask btree_node::kMatchMask447,17690
+    kMatchMask = kExactMatch btree_node::kExactMatch447,17690
+  struct leaf_fields btree_node::leaf_fields450,17733
+    mutable_value_type values[btree_node::leaf_fields::values453,17889
+  struct internal_fields btree_node::internal_fields456,17942
+    btree_node *children[btree_node::internal_fields::children460,18190
+  struct root_fields btree_node::root_fields463,18242
+    btree_node *rightmost;btree_node::root_fields::rightmost464,18291
+    size_type size;btree_node::root_fields::size465,18319
+  bool leaf(btree_node::leaf471,18477
+  int position(btree_node::position474,18583
+  void set_position(btree_node::set_position475,18636
+  int count(btree_node::count478,18758
+  void set_count(btree_node::set_count479,18805
+  int max_count(btree_node::max_count480,18853
+  btree_node* parent(btree_node::parent483,18952
+  bool is_root(btree_node::is_root487,19182
+  void make_root(btree_node::make_root488,19235
+  btree_node* rightmost(btree_node::rightmost494,19423
+  btree_node** mutable_rightmost(btree_node::mutable_rightmost495,19486
+  size_type size(btree_node::size498,19627
+  size_type* mutable_size(btree_node::mutable_size499,19678
+  const key_type& key(btree_node::key502,19794
+  reference value(btree_node::value505,19886
+  const_reference value(btree_node::value508,19979
+  mutable_value_type* mutable_value(btree_node::mutable_value511,20090
+  void value_swap(btree_node::value_swap516,20231
+  btree_node* child(btree_node::child521,20413
+  btree_node** mutable_child(btree_node::mutable_child522,20479
+  void set_child(btree_node::set_child523,20549
+  int lower_bound(btree_node::lower_bound531,20794
+  int upper_bound(btree_node::upper_bound536,21026
+  int linear_search_plain_compare(btree_node::linear_search_plain_compare543,21317
+  int linear_search_compare_to(btree_node::linear_search_compare_to557,21720
+  int binary_search_plain_compare(btree_node::binary_search_plain_compare574,22185
+  int binary_search_compare_to(btree_node::binary_search_compare_to590,22650
+  static btree_node* init_leaf(btree_node::init_leaf634,24314
+  static btree_node* init_internal(btree_node::init_internal647,24686
+  static btree_node* init_root(btree_node::init_root655,24937
+  void destroy(btree_node::destroy661,25134
+  void value_init(btree_node::value_init668,25245
+  void value_init(btree_node::value_init671,25328
+  void value_destroy(btree_node::value_destroy674,25435
+  root_fields fields_;btree_node::fields_679,25530
+template <typename Node,686,25645
+template <typename Node, typename Reference,686,25645
+struct btree_iterator 687,25709
+  typedef typename Node::key_type key_type;btree_iterator::key_type688,25734
+  typedef typename Node::size_type size_type;btree_iterator::size_type689,25779
+  typedef typename Node::difference_type difference_type;btree_iterator::difference_type690,25826
+  typedef typename Node::params_type params_type;btree_iterator::params_type691,25885
+  typedef Node node_type;btree_iterator::node_type693,25938
+  typedef typename std::remove_const<Node>::type normal_node;btree_iterator::normal_node694,25965
+  typedef const Node const_node;btree_iterator::const_node695,26028
+  typedef typename params_type::value_type value_type;btree_iterator::value_type696,26062
+  typedef typename params_type::pointer normal_pointer;btree_iterator::normal_pointer697,26118
+  typedef typename params_type::reference normal_reference;btree_iterator::normal_reference698,26175
+  typedef typename params_type::const_pointer const_pointer;btree_iterator::const_pointer699,26236
+  typedef typename params_type::const_reference const_reference;btree_iterator::const_reference700,26298
+  typedef Pointer pointer;btree_iterator::pointer702,26366
+  typedef Reference reference;btree_iterator::reference703,26394
+  typedef std::bidirectional_iterator_tag iterator_category;btree_iterator::iterator_category704,26426
+    normal_node,btree_iterator::normal_node707,26517
+    normal_node, normal_reference,btree_iterator::normal_reference707,26517
+    normal_node, normal_reference, normal_pointer> iterator;btree_iterator::iterator707,26517
+    const_node,btree_iterator::const_node709,26606
+    const_node, const_reference,btree_iterator::const_reference709,26606
+    const_node, const_reference, const_pointer> const_iterator;btree_iterator::const_iterator709,26606
+  typedef btree_iterator<Node,btree_iterator::Node710,26671
+  typedef btree_iterator<Node, Reference,btree_iterator::Reference710,26671
+  typedef btree_iterator<Node, Reference, Pointer> self_type;btree_iterator::self_type710,26671
+  btree_iterator(btree_iterator::btree_iterator712,26736
+  btree_iterator(btree_iterator::btree_iterator716,26806
+  btree_iterator(btree_iterator::btree_iterator720,26886
+  void increment(btree_iterator::increment726,27025
+  void decrement(btree_iterator::decrement735,27213
+  bool operator==(btree_iterator::operator==743,27357
+  bool operator!=(btree_iterator::operator!=746,27468
+  const key_type& key(btree_iterator::key751,27644
+  reference operator*(btree_iterator::operator*754,27715
+  pointer operator->(btree_iterator::operator->757,27788
+  self_type& operator++(btree_iterator::operator++761,27863
+  self_type& operator--(btree_iterator::operator--765,27934
+  self_type operator++(btree_iterator::operator++769,28005
+  self_type operator--(btree_iterator::operator--774,28100
+  Node *node;btree_iterator::node781,28253
+  int position;btree_iterator::position783,28344
+struct btree_internal_locate_plain_compare 787,28446
+  template <typename K,btree_internal_locate_plain_compare::K788,28492
+  template <typename K, typename T,btree_internal_locate_plain_compare::T788,28492
+  static std::pair<btree_internal_locate_plain_compare::std::pair789,28544
+  static std::pair<Iter, int> dispatch(btree_internal_locate_plain_compare::dispatch789,28544
+struct btree_internal_locate_compare_to 795,28762
+  template <typename K,btree_internal_locate_compare_to::K796,28805
+  template <typename K, typename T,btree_internal_locate_compare_to::T796,28805
+  static std::pair<btree_internal_locate_compare_to::std::pair797,28857
+  static std::pair<Iter, int> dispatch(btree_internal_locate_compare_to::dispatch797,28857
+class btree 803,29024
+  typedef btree<Params> self_type;btree::self_type804,29068
+  typedef btree_node<Params> node_type;btree::node_type805,29104
+  typedef typename node_type::base_fields base_fields;btree::base_fields806,29145
+  typedef typename node_type::leaf_fields leaf_fields;btree::leaf_fields807,29201
+  typedef typename node_type::internal_fields internal_fields;btree::internal_fields808,29257
+  typedef typename node_type::root_fields root_fields;btree::root_fields809,29321
+  typedef typename Params::is_key_compare_to is_key_compare_to;btree::is_key_compare_to810,29377
+  typedef typename if_<btree::if_814,29549
+    btree_internal_locate_plain_compare>::type internal_locate_type;btree::internal_locate_type817,29644
+    kNodeValues btree::kNodeValues820,29726
+    kNodeValues = node_type::kNodeValues,btree::node_type::kNodeValues820,29726
+    kMinNodeValues btree::kMinNodeValues821,29769
+    kMinNodeValues = kNodeValues btree::kNodeValues821,29769
+    kValueSize btree::kValueSize822,29808
+    kValueSize = node_type::kValueSize,btree::node_type::kValueSize822,29808
+    kExactMatch btree::kExactMatch823,29849
+    kExactMatch = node_type::kExactMatch,btree::node_type::kExactMatch823,29849
+    kMatchMask btree::kMatchMask824,29892
+    kMatchMask = node_type::kMatchMask,btree::node_type::kMatchMask824,29892
+  template <typename Base,btree::Base833,30341
+  struct empty_base_handle btree::empty_base_handle834,30384
+    empty_base_handle(btree::empty_base_handle::empty_base_handle835,30428
+    Data data;btree::empty_base_handle::data839,30529
+  struct node_stats btree::node_stats842,30553
+    node_stats(btree::node_stats::node_stats843,30576
+    node_stats& operator+=(btree::node_stats::operator+=848,30680
+    ssize_t leaf_nodes;btree::node_stats::leaf_nodes854,30839
+    ssize_t internal_nodes;btree::node_stats::internal_nodes855,30864
+  typedef Params params_type;btree::params_type859,30911
+  typedef typename Params::key_type key_type;btree::key_type860,30942
+  typedef typename Params::data_type data_type;btree::data_type861,30989
+  typedef typename Params::mapped_type mapped_type;btree::mapped_type862,31038
+  typedef typename Params::value_type value_type;btree::value_type863,31091
+  typedef typename Params::key_compare key_compare;btree::key_compare864,31142
+  typedef typename Params::pointer pointer;btree::pointer865,31195
+  typedef typename Params::const_pointer const_pointer;btree::const_pointer866,31240
+  typedef typename Params::reference reference;btree::reference867,31297
+  typedef typename Params::const_reference const_reference;btree::const_reference868,31346
+  typedef typename Params::size_type size_type;btree::size_type869,31407
+  typedef typename Params::difference_type difference_type;btree::difference_type870,31456
+  typedef btree_iterator<node_type,btree::node_type871,31517
+  typedef btree_iterator<node_type, reference,btree::reference871,31517
+  typedef btree_iterator<node_type, reference, pointer> iterator;btree::iterator871,31517
+  typedef typename iterator::const_iterator const_iterator;btree::const_iterator872,31584
+  typedef std::reverse_iterator<const_iterator> const_reverse_iterator;btree::const_reverse_iterator873,31645
+  typedef std::reverse_iterator<iterator> reverse_iterator;btree::reverse_iterator874,31718
+  typedef typename Params::allocator_type allocator_type;btree::allocator_type876,31781
+    internal_allocator_type;btree::internal_allocator_type878,31905
+  ~btree(btree::~btree888,32114
+  iterator begin(btree::begin893,32174
+  const_iterator begin(btree::begin896,32238
+  iterator end(btree::end899,32320
+  const_iterator end(btree::end902,32420
+  reverse_iterator rbegin(btree::rbegin905,32538
+  const_reverse_iterator rbegin(btree::rbegin908,32611
+  reverse_iterator rend(btree::rend911,32702
+  const_reverse_iterator rend(btree::rend914,32775
+  iterator lower_bound(btree::lower_bound919,32930
+  const_iterator lower_bound(btree::lower_bound923,33066
+  iterator upper_bound(btree::upper_bound929,33283
+  const_iterator upper_bound(btree::upper_bound933,33419
+  std::pair<btree::std::pair941,33780
+  std::pair<iterator,iterator> equal_range(btree::equal_range941,33780
+  std::pair<btree::std::pair944,33916
+  std::pair<const_iterator,const_iterator> equal_range(btree::equal_range944,33916
+  std::pair<btree::std::pair954,34467
+  std::pair<btree::std::pair958,34705
+  std::pair<iterator,bool> insert_unique(btree::insert_unique958,34705
+  iterator insert_multi(btree::insert_multi980,35724
+  iterator find_unique(btree::find_unique1014,37134
+  const_iterator find_unique(btree::find_unique1018,37270
+  iterator find_multi(btree::find_multi1022,37424
+  const_iterator find_multi(btree::find_multi1026,37558
+  size_type count_unique(btree::count_unique1032,37787
+  size_type count_multi(btree::count_multi1042,38122
+  self_type& operator=(btree::operator=1053,38434
+  key_compare* mutable_key_comp(btree::mutable_key_comp1062,38610
+  const key_compare& key_comp(btree::key_comp1065,38670
+  bool compare_keys(btree::compare_keys1068,38735
+  void dump(btree::dump1074,38967
+  size_type size(btree::size1084,39233
+  size_type max_size(btree::max_size1089,39371
+  bool empty(btree::empty1090,39451
+  size_type height(btree::height1093,39567
+  size_type leaf_nodes(btree::leaf_nodes1110,40115
+  size_type internal_nodes(btree::internal_nodes1113,40201
+  size_type nodes(btree::nodes1116,40295
+  size_type bytes_used(btree::bytes_used1122,40483
+  static double average_bytes_per_value(btree::average_bytes_per_value1136,41031
+  double fullness(btree::fullness1147,41656
+  double overhead(btree::overhead1153,41960
+  node_type* root(btree::root1162,42154
+  const node_type* root(btree::root1163,42198
+  node_type** mutable_root(btree::mutable_root1164,42254
+  node_type* rightmost(btree::rightmost1167,42363
+  const node_type* rightmost(btree::rightmost1170,42468
+  node_type** mutable_rightmost(btree::mutable_rightmost1173,42585
+  node_type* leftmost(btree::leftmost1176,42728
+  const node_type* leftmost(btree::leftmost1177,42798
+  size_type* mutable_size(btree::mutable_size1180,42937
+  internal_allocator_type* mutable_internal_allocator(btree::mutable_internal_allocator1183,43029
+  const internal_allocator_type& internal_allocator(btree::internal_allocator1186,43152
+  node_type* new_internal_node(btree::new_internal_node1191,43327
+  node_type* new_internal_root_node(btree::new_internal_root_node1196,43571
+  node_type* new_leaf_node(btree::new_leaf_node1201,43797
+  node_type* new_leaf_root_node(btree::new_leaf_root_node1206,44034
+  void delete_internal_node(btree::delete_internal_node1212,44342
+  void delete_internal_root_node(btree::delete_internal_root_node1218,44559
+  void delete_leaf_node(btree::delete_leaf_node1223,44737
+  iterator internal_end(btree::internal_end1246,45656
+  const_iterator internal_end(btree::internal_end1249,45741
+  std::pair<btree::std::pair1274,47086
+  std::pair<btree::std::pair1277,47213
+  std::pair<btree::std::pair1280,47354
+  node_stats internal_stats(btree::internal_stats1313,48554
+  empty_base_handle<btree::empty_base_handle1328,48898
+  empty_base_handle<internal_allocator_type, node_type*> root_;btree::root_1328,48898
+  static typename if_<btree::if_1334,49142
+inline void btree_node<P>::insert_value(insert_value1369,50588
+inline void btree_node<P>::remove_value(remove_value1388,51032
+void btree_node<P>::rebalance_right_to_left(rebalance_right_to_left1406,51456
+void btree_node<P>::rebalance_left_to_right(rebalance_left_to_right1453,53003
+void btree_node<P>::split(split1498,54519
+void btree_node<P>::merge(merge1539,55899
+void btree_node<P>::swap(swap1571,56821
+template <typename N,1611,57798
+template <typename N, typename R,1611,57798
+void btree_iterator<N, R, P>::increment_slow(increment_slow1612,57845
+template <typename N,1634,58435
+template <typename N, typename R,1634,58435
+void btree_iterator<N, R, P>::increment_by(increment_by1635,58482
+template <typename N,1651,58837
+template <typename N, typename R,1651,58837
+void btree_iterator<N, R, P>::decrement_slow(decrement_slow1652,58884
+btree<P>::btree(btree1677,59501
+btree<P>::btree(btree1683,59654
+btree<P>::insert_unique(insert_unique1691,59891
+btree<P>::insert_unique(insert_unique1714,60655
+void btree<P>::insert_unique(insert_unique1739,61498
+btree<P>::insert_multi(insert_multi1747,61715
+btree<P>::insert_multi(insert_multi1761,62063
+void btree<P>::insert_multi(insert_multi1783,62795
+void btree<P>::assign(assign1790,62948
+typename btree<P>::iterator btree<P>::erase(erase1810,63547
+int btree<P>::erase(erase1872,65500
+int btree<P>::erase_unique(erase_unique1881,65704
+int btree<P>::erase_multi(erase_multi1892,65984
+void btree<P>::clear(clear1905,66418
+void btree<P>::swap(swap1913,66558
+void btree<P>::verify(verify1919,66731
+void btree<P>::rebalance_or_split(rebalance_or_split1934,67196
+void btree<P>::merge_nodes(merge_nodes2043,71251
+bool btree<P>::try_merge_or_rebalance(try_merge_or_rebalance2056,71548
+void btree<P>::try_shrink(try_shrink2108,73715
+inline IterType btree<P>::internal_last(internal_last2135,74570
+btree<P>::internal_insert(internal_insert2148,74919
+inline std::pair<IterType, int> btree<P>::internal_locate(internal_locate2178,75987
+inline std::pair<IterType, int> btree<P>::internal_locate_plain_compare(internal_locate_plain_compare2184,76213
+inline std::pair<IterType, int> btree<P>::internal_locate_compare_to(internal_locate_compare_to2197,76610
+IterType btree<P>::internal_lower_bound(internal_lower_bound2214,77152
+IterType btree<P>::internal_upper_bound(internal_upper_bound2231,77594
+IterType btree<P>::internal_find_unique(internal_find_unique2247,78012
+IterType btree<P>::internal_find_multi(internal_find_multi2265,78508
+void btree<P>::internal_clear(internal_clear2280,78878
+void btree<P>::internal_dump(internal_dump2296,79239
+int btree<P>::internal_verify(internal_verify2313,79707
+
+neo/cpp-btree/btree_container.h,8628
+#define UTIL_BTREE_BTREE_CONTAINER_H__16,664
+namespace btree 23,769
+class btree_container btree::btree_container28,905
+  typedef btree_container<Tree> self_type;btree::btree_container::self_type29,930
+  typedef typename Tree::params_type params_type;btree::btree_container::params_type32,986
+  typedef typename Tree::key_type key_type;btree::btree_container::key_type33,1037
+  typedef typename Tree::value_type value_type;btree::btree_container::value_type34,1082
+  typedef typename Tree::key_compare key_compare;btree::btree_container::key_compare35,1131
+  typedef typename Tree::allocator_type allocator_type;btree::btree_container::allocator_type36,1182
+  typedef typename Tree::pointer pointer;btree::btree_container::pointer37,1239
+  typedef typename Tree::const_pointer const_pointer;btree::btree_container::const_pointer38,1282
+  typedef typename Tree::reference reference;btree::btree_container::reference39,1337
+  typedef typename Tree::const_reference const_reference;btree::btree_container::const_reference40,1384
+  typedef typename Tree::size_type size_type;btree::btree_container::size_type41,1443
+  typedef typename Tree::difference_type difference_type;btree::btree_container::difference_type42,1490
+  typedef typename Tree::iterator iterator;btree::btree_container::iterator43,1549
+  typedef typename Tree::const_iterator const_iterator;btree::btree_container::const_iterator44,1594
+  typedef typename Tree::reverse_iterator reverse_iterator;btree::btree_container::reverse_iterator45,1651
+  typedef typename Tree::const_reverse_iterator const_reverse_iterator;btree::btree_container::const_reverse_iterator46,1712
+  btree_container(btree::btree_container::btree_container50,1824
+  btree_container(btree::btree_container::btree_container55,1958
+  iterator begin(btree::btree_container::begin60,2055
+  const_iterator begin(btree::btree_container::begin61,2101
+  iterator end(btree::btree_container::end62,2159
+  const_iterator end(btree::btree_container::end63,2201
+  reverse_iterator rbegin(btree::btree_container::rbegin64,2255
+  const_reverse_iterator rbegin(btree::btree_container::rbegin65,2311
+  reverse_iterator rend(btree::btree_container::rend66,2379
+  const_reverse_iterator rend(btree::btree_container::rend67,2431
+  iterator lower_bound(btree::btree_container::lower_bound70,2520
+  const_iterator lower_bound(btree::btree_container::lower_bound73,2608
+  iterator upper_bound(btree::btree_container::upper_bound76,2708
+  const_iterator upper_bound(btree::btree_container::upper_bound79,2796
+  std::pair<btree::btree_container::std::pair82,2896
+  std::pair<iterator,iterator> equal_range(btree::btree_container::equal_range82,2896
+  std::pair<btree::btree_container::std::pair85,3004
+  std::pair<const_iterator,const_iterator> equal_range(btree::btree_container::equal_range85,3004
+  void clear(btree::btree_container::clear90,3156
+  void swap(btree::btree_container::swap93,3199
+  void dump(btree::btree_container::dump96,3259
+  void verify(btree::btree_container::verify99,3324
+  size_type size(btree::btree_container::size104,3398
+  size_type max_size(btree::btree_container::max_size105,3449
+  bool empty(btree::btree_container::empty106,3508
+  size_type height(btree::btree_container::height107,3556
+  size_type internal_nodes(btree::btree_container::internal_nodes108,3611
+  size_type leaf_nodes(btree::btree_container::leaf_nodes109,3682
+  size_type nodes(btree::btree_container::nodes110,3745
+  size_type bytes_used(btree::btree_container::bytes_used111,3798
+  static double average_bytes_per_value(btree::btree_container::average_bytes_per_value112,3861
+  double fullness(btree::btree_container::fullness115,3956
+  double overhead(btree::btree_container::overhead116,4012
+  bool operator==(btree::btree_container::operator==118,4070
+  bool operator!=(btree::btree_container::operator!=130,4343
+  Tree tree_;btree::btree_container::tree_136,4448
+inline std::ostream& operator<<(140,4492
+class btree_unique_container 147,4692
+  typedef btree_unique_container<Tree> self_type;btree_unique_container::self_type148,4755
+  typedef btree_container<Tree> super_type;btree_unique_container::super_type149,4806
+  typedef typename Tree::key_type key_type;btree_unique_container::key_type152,4863
+  typedef typename Tree::value_type value_type;btree_unique_container::value_type153,4908
+  typedef typename Tree::size_type size_type;btree_unique_container::size_type154,4957
+  typedef typename Tree::key_compare key_compare;btree_unique_container::key_compare155,5004
+  typedef typename Tree::allocator_type allocator_type;btree_unique_container::allocator_type156,5055
+  typedef typename Tree::iterator iterator;btree_unique_container::iterator157,5112
+  typedef typename Tree::const_iterator const_iterator;btree_unique_container::const_iterator158,5157
+  btree_unique_container(btree_unique_container::btree_unique_container162,5253
+  btree_unique_container(btree_unique_container::btree_unique_container168,5460
+  btree_unique_container(btree_unique_container::btree_unique_container174,5597
+  iterator find(btree_unique_container::find182,5882
+  const_iterator find(btree_unique_container::find185,5969
+  size_type count(btree_unique_container::count188,6068
+  std::pair<btree_unique_container::std::pair193,6192
+  std::pair<iterator,bool> insert(btree_unique_container::insert193,6192
+  iterator insert(btree_unique_container::insert196,6297
+  void insert(btree_unique_container::insert200,6452
+  int erase(btree_unique_container::erase205,6573
+  iterator erase(btree_unique_container::erase211,6872
+  void erase(btree_unique_container::erase214,6956
+class btree_map_container 221,7149
+  typedef btree_map_container<Tree> self_type;btree_map_container::self_type222,7216
+  typedef btree_unique_container<Tree> super_type;btree_map_container::super_type223,7264
+  typedef typename Tree::key_type key_type;btree_map_container::key_type226,7328
+  typedef typename Tree::data_type data_type;btree_map_container::data_type227,7373
+  typedef typename Tree::value_type value_type;btree_map_container::value_type228,7420
+  typedef typename Tree::mapped_type mapped_type;btree_map_container::mapped_type229,7469
+  typedef typename Tree::key_compare key_compare;btree_map_container::key_compare230,7520
+  typedef typename Tree::allocator_type allocator_type;btree_map_container::allocator_type231,7571
+  struct generate_value btree_map_container::generate_value237,7829
+    generate_value(btree_map_container::generate_value::generate_value238,7856
+    value_type operator*(btree_map_container::generate_value::operator*241,7922
+    const key_type &key;btree_map_container::generate_value::key244,8013
+  btree_map_container(btree_map_container::btree_map_container249,8084
+  btree_map_container(btree_map_container::btree_map_container255,8285
+  btree_map_container(btree_map_container::btree_map_container261,8419
+class btree_multi_container 275,8912
+  typedef btree_multi_container<Tree> self_type;btree_multi_container::self_type276,8974
+  typedef btree_container<Tree> super_type;btree_multi_container::super_type277,9024
+  typedef typename Tree::key_type key_type;btree_multi_container::key_type280,9081
+  typedef typename Tree::value_type value_type;btree_multi_container::value_type281,9126
+  typedef typename Tree::size_type size_type;btree_multi_container::size_type282,9175
+  typedef typename Tree::key_compare key_compare;btree_multi_container::key_compare283,9222
+  typedef typename Tree::allocator_type allocator_type;btree_multi_container::allocator_type284,9273
+  typedef typename Tree::iterator iterator;btree_multi_container::iterator285,9330
+  typedef typename Tree::const_iterator const_iterator;btree_multi_container::const_iterator286,9375
+  btree_multi_container(btree_multi_container::btree_multi_container290,9471
+  btree_multi_container(btree_multi_container::btree_multi_container296,9676
+  btree_multi_container(btree_multi_container::btree_multi_container302,9812
+  iterator find(btree_multi_container::find310,10094
+  const_iterator find(btree_multi_container::find313,10180
+  size_type count(btree_multi_container::count316,10278
+  iterator insert(btree_multi_container::insert321,10401
+  iterator insert(btree_multi_container::insert324,10489
+  void insert(btree_multi_container::insert328,10643
+  int erase(btree_multi_container::erase333,10763
+  iterator erase(btree_multi_container::erase339,11061
+  void erase(btree_multi_container::erase342,11145
+
+neo/cpp-btree/btree_map.h,1764
+#define UTIL_BTREE_BTREE_MAP_H__23,1068
+namespace btree 34,1261
+template <typename Key,btree::Key37,1345
+template <typename Key, typename Value,btree::Value37,1345
+          typename Compare btree::Compare38,1386
+  typedef btree_map<Key, Value, Compare, Alloc, TargetNodeSize> self_type;btree::self_type44,1668
+    Key, Value, Compare, Alloc, TargetNodeSize> params_type;btree::params_type46,1773
+  typedef btree<params_type> btree_type;btree::btree_type47,1835
+  typedef btree_map_container<btree_type> super_type;btree::super_type48,1877
+  typedef typename btree_type::key_compare btree::btree_type::key_compare51,1944
+  typedef typename btree_type::allocator_type btree::btree_type::allocator_type52,2001
+template <typename K,75,2622
+template <typename K, typename V,75,2622
+template <typename K, typename V, typename C,75,2622
+template <typename K, typename V, typename C, typename A,75,2622
+inline void swap(76,2688
+template <typename Key,82,2871
+template <typename Key, typename Value,82,2871
+          typename Compare 83,2912
+  typedef btree_multimap<Key, Value, Compare, Alloc, TargetNodeSize> self_type;89,3201
+    Key, Value, Compare, Alloc, TargetNodeSize> params_type;91,3311
+  typedef btree<params_type> btree_type;92,3373
+  typedef btree_multi_container<btree_type> super_type;93,3415
+  typedef typename btree_type::key_compare 96,3484
+  typedef typename btree_type::allocator_type 97,3541
+  typedef typename btree_type::data_type 98,3604
+  typedef typename btree_type::mapped_type 99,3657
+template <typename K,122,4302
+template <typename K, typename V,122,4302
+template <typename K, typename V, typename C,122,4302
+template <typename K, typename V, typename C, typename A,122,4302
+inline void swap(123,4368
+
+neo/cpp-btree/btree_set.h,1440
+#define UTIL_BTREE_BTREE_SET_H__21,971
+namespace btree 30,1122
+template <typename Key,btree::Key33,1206
+          typename Compare btree::Compare34,1231
+  typedef btree_set<Key, Compare, Alloc, TargetNodeSize> self_type;btree::self_type40,1484
+  typedef btree_set_params<Key, Compare, Alloc, TargetNodeSize> params_type;btree::params_type41,1553
+  typedef btree<params_type> btree_type;btree::btree_type42,1631
+  typedef btree_unique_container<btree_type> super_type;btree::super_type43,1673
+  typedef typename btree_type::key_compare btree::btree_type::key_compare46,1743
+  typedef typename btree_type::allocator_type btree::btree_type::allocator_type47,1800
+template <typename K,70,2421
+template <typename K, typename C,70,2421
+template <typename K, typename C, typename A,70,2421
+inline void swap(71,2475
+template <typename Key,76,2634
+          typename Compare 77,2659
+  typedef btree_multiset<Key, Compare, Alloc, TargetNodeSize> self_type;83,2916
+  typedef btree_set_params<Key, Compare, Alloc, TargetNodeSize> params_type;84,2990
+  typedef btree<params_type> btree_type;85,3068
+  typedef btree_multi_container<btree_type> super_type;86,3110
+  typedef typename btree_type::key_compare 89,3179
+  typedef typename btree_type::allocator_type 90,3236
+template <typename K,113,3887
+template <typename K, typename C,113,3887
+template <typename K, typename C, typename A,113,3887
+inline void swap(114,3941
+
+neo/cpp-btree/btree_test.h,8764
+#define UTIL_BTREE_BTREE_TEST_H__16,659
+namespace std 37,1067
+template <typename T,std::T40,1138
+ostream& operator<<(std::operator<<41,1173
+template <typename T,49,1517
+template <typename T, typename U,49,1517
+template <typename T, typename U, typename V,49,1517
+bool operator==(operator==50,1576
+template <typename T,56,1800
+  typedef pair<typename remove_const<T>::type,type58,1871
+               typename remove_const<U>::type> type;59,1919
+namespace btree 64,2001
+struct select1st btree::select1st68,2085
+  const typename _Pair::first_type& operator()(btree::select1st::operator()69,2169
+template <typename K,76,2430
+struct KeyOfValue 77,2465
+  typedef select1st<V> type;KeyOfValue::type78,2486
+struct identity 82,2545
+  inline const T& operator()(identity::operator()83,2564
+  typedef identity<K> type;90,2812
+inline ptrdiff_t strcount(94,2903
+inline ptrdiff_t strcount(108,3256
+inline ptrdiff_t strcount(112,3366
+template <typename TreeType,120,3775
+class base_checker 121,3827
+  typedef base_checker<TreeType,base_checker::TreeType122,3849
+  typedef base_checker<TreeType, CheckerType> self_type;base_checker::self_type122,3849
+  typedef typename TreeType::key_type key_type;base_checker::key_type125,3919
+  typedef typename TreeType::value_type value_type;base_checker::value_type126,3968
+  typedef typename TreeType::key_compare key_compare;base_checker::key_compare127,4021
+  typedef typename TreeType::pointer pointer;base_checker::pointer128,4076
+  typedef typename TreeType::const_pointer const_pointer;base_checker::const_pointer129,4123
+  typedef typename TreeType::reference reference;base_checker::reference130,4182
+  typedef typename TreeType::const_reference const_reference;base_checker::const_reference131,4233
+  typedef typename TreeType::size_type size_type;base_checker::size_type132,4296
+  typedef typename TreeType::difference_type difference_type;base_checker::difference_type133,4347
+  typedef typename TreeType::iterator iterator;base_checker::iterator134,4410
+  typedef typename TreeType::const_iterator const_iterator;base_checker::const_iterator135,4459
+  typedef typename TreeType::reverse_iterator reverse_iterator;base_checker::reverse_iterator136,4520
+  typedef typename TreeType::const_reverse_iterator const_reverse_iterator;base_checker::const_reverse_iterator137,4585
+  base_checker(base_checker::base_checker141,4701
+  base_checker(base_checker::base_checker145,4778
+  base_checker(base_checker::base_checker152,4967
+  iterator begin(base_checker::begin159,5126
+  const_iterator begin(base_checker::begin160,5172
+  iterator end(base_checker::end161,5230
+  const_iterator end(base_checker::end162,5272
+  reverse_iterator rbegin(base_checker::rbegin163,5326
+  const_reverse_iterator rbegin(base_checker::rbegin164,5382
+  reverse_iterator rend(base_checker::rend165,5450
+  const_reverse_iterator rend(base_checker::rend166,5502
+  template <typename IterType,base_checker::IterType169,5591
+  IterType iter_check(base_checker::iter_check170,5649
+  template <typename IterType,base_checker::IterType179,5917
+  IterType riter_check(base_checker::riter_check180,5975
+  void value_check(base_checker::value_check189,6246
+  void erase_check(base_checker::erase_check199,6569
+  iterator lower_bound(base_checker::lower_bound207,6858
+  const_iterator lower_bound(base_checker::lower_bound210,6985
+  iterator upper_bound(base_checker::upper_bound213,7124
+  const_iterator upper_bound(base_checker::upper_bound216,7251
+  std::pair<base_checker::std::pair219,7390
+  std::pair<iterator,iterator> equal_range(base_checker::equal_range219,7390
+  std::pair<base_checker::std::pair228,7798
+  std::pair<const_iterator,const_iterator> equal_range(base_checker::equal_range228,7798
+  iterator find(base_checker::find237,8248
+  const_iterator find(base_checker::find240,8354
+  size_type count(base_checker::count243,8472
+  self_type& operator=(base_checker::operator=250,8652
+  int erase(base_checker::erase257,8799
+  iterator erase(base_checker::erase267,9103
+  void erase(base_checker::erase288,9789
+  void clear(base_checker::clear309,10552
+  void swap(base_checker::swap313,10618
+  void verify(base_checker::verify318,10712
+  const TreeType& tree(base_checker::tree360,12131
+  size_type size(base_checker::size363,12204
+  size_type max_size(base_checker::max_size367,12310
+  bool empty(base_checker::empty368,12369
+  size_type height(base_checker::height372,12474
+  size_type internal_nodes(base_checker::internal_nodes373,12529
+  size_type leaf_nodes(base_checker::leaf_nodes374,12600
+  size_type nodes(base_checker::nodes375,12663
+  size_type bytes_used(base_checker::bytes_used376,12716
+  double fullness(base_checker::fullness377,12779
+  double overhead(base_checker::overhead378,12835
+  TreeType tree_;base_checker::tree_381,12906
+  const TreeType &const_tree_;base_checker::const_tree_382,12925
+  CheckerType checker_;base_checker::checker_383,12957
+template <typename TreeType,388,13136
+class unique_checker 389,13188
+  typedef base_checker<TreeType,unique_checker::TreeType390,13257
+  typedef base_checker<TreeType, CheckerType> super_type;unique_checker::super_type390,13257
+  typedef unique_checker<TreeType,unique_checker::TreeType391,13316
+  typedef unique_checker<TreeType, CheckerType> self_type;unique_checker::self_type391,13316
+  typedef typename super_type::iterator iterator;unique_checker::iterator394,13388
+  typedef typename super_type::value_type value_type;unique_checker::value_type395,13439
+  unique_checker(unique_checker::unique_checker399,13533
+  unique_checker(unique_checker::unique_checker403,13606
+  unique_checker(unique_checker::unique_checker408,13733
+  std::pair<unique_checker::std::pair413,13846
+  std::pair<iterator,bool> insert(unique_checker::insert413,13846
+  iterator insert(unique_checker::insert424,14357
+  void insert(unique_checker::insert435,14846
+template <typename TreeType,445,15135
+class multi_checker 446,15187
+  typedef base_checker<TreeType,multi_checker::TreeType447,15255
+  typedef base_checker<TreeType, CheckerType> super_type;multi_checker::super_type447,15255
+  typedef multi_checker<TreeType,multi_checker::TreeType448,15314
+  typedef multi_checker<TreeType, CheckerType> self_type;multi_checker::self_type448,15314
+  typedef typename super_type::iterator iterator;multi_checker::iterator451,15385
+  typedef typename super_type::value_type value_type;multi_checker::value_type452,15436
+  multi_checker(multi_checker::multi_checker456,15530
+  multi_checker(multi_checker::multi_checker460,15602
+  multi_checker(multi_checker::multi_checker465,15728
+  iterator insert(multi_checker::insert470,15840
+  iterator insert(multi_checker::insert479,16215
+  void insert(multi_checker::insert489,16656
+char* GenerateDigits(496,16771
+struct Generator 509,17038
+  int maxval;Generator::maxval510,17058
+  Generator(Generator::Generator511,17073
+  K operator()(Generator::operator()514,17119
+struct Generator<Generator521,17216
+  int maxval;Generator::maxval522,17249
+  Generator(Generator::Generator523,17264
+  std::string operator()(Generator::operator()526,17310
+template <typename T,532,17425
+struct Generator<Generator533,17460
+  Generator<typename std::remove_const<T>::type> tgen;Generator::tgen534,17498
+  Generator<typename std::remove_const<U>::type> ugen;Generator::ugen535,17554
+  Generator(Generator::Generator537,17612
+  std::pair<Generator::std::pair541,17674
+  std::pair<T, U> operator()(Generator::operator()541,17674
+const std::vector<int>& GenerateNumbers(547,17854
+std::vector<V> GenerateValues(570,18430
+template <typename T,585,18851
+void DoTest(586,18886
+void ConstTest(735,24052
+  typedef typename T::value_type 736,24072
+template <typename T,790,26429
+void BtreeTest(791,26464
+  typedef typename std::remove_const<std::remove_const794,26505
+template <typename T,812,27173
+void BtreeMultiTest(813,27208
+  typedef typename std::remove_const<std::remove_const816,27254
+template <typename T,845,28343
+template <typename T, typename Alloc 845,28343
+  typedef typename Alloc::pointer 848,28451
+  typedef typename Alloc::size_type 849,28495
+  template <class U> struct rebind 874,29252
+    typedef TestAllocator<U,rebind::U875,29290
+    typedef TestAllocator<U, typename Alloc::template rebind<U>::other> other;rebind::other875,29290
+void BtreeAllocatorTest(885,29500
+  typedef typename T::value_type 886,29529
+void BtreeMapTest(906,30020
+  typedef typename T::value_type 907,30043
+  typedef typename T::mapped_type 908,30089
+void BtreeMultiMapTest(932,30885
+  typedef typename T::mapped_type 933,30913
+
+neo/cpp-btree/safe_btree.h,8251
+#define UTIL_BTREE_SAFE_BTREE_H__29,1345
+namespace btree 37,1466
+template <typename Tree,btree::Tree39,1487
+class safe_btree_iterator btree::safe_btree_iterator40,1532
+  typedef typename Iterator::key_type key_type;btree::safe_btree_iterator::key_type42,1571
+  typedef typename Iterator::value_type value_type;btree::safe_btree_iterator::value_type43,1620
+  typedef typename Iterator::size_type size_type;btree::safe_btree_iterator::size_type44,1673
+  typedef typename Iterator::difference_type difference_type;btree::safe_btree_iterator::difference_type45,1724
+  typedef typename Iterator::pointer pointer;btree::safe_btree_iterator::pointer46,1787
+  typedef typename Iterator::reference reference;btree::safe_btree_iterator::reference47,1834
+  typedef typename Iterator::const_pointer const_pointer;btree::safe_btree_iterator::const_pointer48,1885
+  typedef typename Iterator::const_reference const_reference;btree::safe_btree_iterator::const_reference49,1944
+  typedef typename Iterator::iterator_category iterator_category;btree::safe_btree_iterator::iterator_category50,2007
+  typedef typename Tree::iterator iterator;btree::safe_btree_iterator::iterator51,2074
+  typedef typename Tree::const_iterator const_iterator;btree::safe_btree_iterator::const_iterator52,2119
+  typedef safe_btree_iterator<Tree,btree::safe_btree_iterator::Tree53,2176
+  typedef safe_btree_iterator<Tree, Iterator> self_type;btree::safe_btree_iterator::self_type53,2176
+  void update(btree::safe_btree_iterator::update55,2236
+  safe_btree_iterator(btree::safe_btree_iterator::safe_btree_iterator67,2589
+  safe_btree_iterator(btree::safe_btree_iterator::safe_btree_iterator73,2702
+  safe_btree_iterator(btree::safe_btree_iterator::safe_btree_iterator79,2864
+  Tree* tree(btree::safe_btree_iterator::tree87,3029
+  int64_t generation(btree::safe_btree_iterator::generation88,3069
+  Iterator* mutable_iter(btree::safe_btree_iterator::mutable_iter90,3125
+  const Iterator& iter(btree::safe_btree_iterator::iter106,3777
+  bool operator==(btree::safe_btree_iterator::operator==111,3884
+  bool operator!=(btree::safe_btree_iterator::operator!=114,3973
+  const key_type& key(btree::safe_btree_iterator::key119,4127
+  reference operator*(btree::safe_btree_iterator::operator*124,4296
+  pointer operator->(btree::safe_btree_iterator::operator->130,4507
+  self_type& operator++(btree::safe_btree_iterator::operator++136,4646
+  self_type& operator--(btree::safe_btree_iterator::operator--141,4740
+  self_type operator++(btree::safe_btree_iterator::operator++146,4834
+  self_type operator--(btree::safe_btree_iterator::operator--151,4929
+  mutable int64_t generation_;btree::safe_btree_iterator::generation_159,5095
+  mutable key_type key_;btree::safe_btree_iterator::key_161,5165
+  mutable Iterator iter_;btree::safe_btree_iterator::iter_163,5222
+  Tree *tree_;btree::safe_btree_iterator::tree_165,5297
+class safe_btree 169,5347
+  typedef safe_btree<Params> self_type;safe_btree::self_type170,5367
+  typedef btree<Params> btree_type;safe_btree::btree_type172,5410
+  typedef typename btree_type::iterator tree_iterator;safe_btree::tree_iterator173,5447
+  typedef typename btree_type::const_iterator tree_const_iterator;safe_btree::tree_const_iterator174,5503
+  typedef typename btree_type::params_type params_type;safe_btree::params_type177,5583
+  typedef typename btree_type::key_type key_type;safe_btree::key_type178,5640
+  typedef typename btree_type::data_type data_type;safe_btree::data_type179,5691
+  typedef typename btree_type::mapped_type mapped_type;safe_btree::mapped_type180,5744
+  typedef typename btree_type::value_type value_type;safe_btree::value_type181,5801
+  typedef typename btree_type::key_compare key_compare;safe_btree::key_compare182,5856
+  typedef typename btree_type::allocator_type allocator_type;safe_btree::allocator_type183,5913
+  typedef typename btree_type::pointer pointer;safe_btree::pointer184,5976
+  typedef typename btree_type::const_pointer const_pointer;safe_btree::const_pointer185,6025
+  typedef typename btree_type::reference reference;safe_btree::reference186,6086
+  typedef typename btree_type::const_reference const_reference;safe_btree::const_reference187,6139
+  typedef typename btree_type::size_type size_type;safe_btree::size_type188,6204
+  typedef typename btree_type::difference_type difference_type;safe_btree::difference_type189,6257
+  typedef safe_btree_iterator<self_type,safe_btree::self_type190,6322
+  typedef safe_btree_iterator<self_type, tree_iterator> iterator;safe_btree::iterator190,6322
+    const self_type,safe_btree::self_type192,6421
+    const self_type, tree_const_iterator> const_iterator;safe_btree::const_iterator192,6421
+  typedef std::reverse_iterator<const_iterator> const_reverse_iterator;safe_btree::const_reverse_iterator193,6480
+  typedef std::reverse_iterator<iterator> reverse_iterator;safe_btree::reverse_iterator194,6553
+  safe_btree(safe_btree::safe_btree198,6653
+  safe_btree(safe_btree::safe_btree204,6807
+  iterator begin(safe_btree::begin209,6899
+  const_iterator begin(safe_btree::begin212,6969
+  iterator end(safe_btree::end215,7057
+  const_iterator end(safe_btree::end218,7123
+  reverse_iterator rbegin(safe_btree::rbegin221,7207
+  const_reverse_iterator rbegin(safe_btree::rbegin224,7280
+  reverse_iterator rend(safe_btree::rend227,7371
+  const_reverse_iterator rend(safe_btree::rend230,7444
+  iterator lower_bound(safe_btree::lower_bound235,7560
+  const_iterator lower_bound(safe_btree::lower_bound238,7664
+  iterator upper_bound(safe_btree::upper_bound241,7786
+  const_iterator upper_bound(safe_btree::upper_bound244,7890
+  std::pair<safe_btree::std::pair247,8012
+  std::pair<iterator, iterator> equal_range(safe_btree::equal_range247,8012
+  std::pair<safe_btree::std::pair252,8259
+  std::pair<const_iterator, const_iterator> equal_range(safe_btree::equal_range252,8259
+  iterator find_unique(safe_btree::find_unique257,8548
+  const_iterator find_unique(safe_btree::find_unique260,8652
+  iterator find_multi(safe_btree::find_multi263,8774
+  const_iterator find_multi(safe_btree::find_multi266,8876
+  size_type count_unique(safe_btree::count_unique269,8996
+  size_type count_multi(safe_btree::count_multi272,9093
+  std::pair<safe_btree::std::pair278,9252
+  std::pair<iterator, bool> insert_unique(safe_btree::insert_unique278,9252
+  std::pair<safe_btree::std::pair283,9509
+  std::pair<iterator, bool> insert_unique(safe_btree::insert_unique283,9509
+  iterator insert_unique(safe_btree::insert_unique288,9737
+  void insert_unique(safe_btree::insert_unique294,9976
+  iterator insert_multi(safe_btree::insert_multi299,10099
+  iterator insert_multi(safe_btree::insert_multi303,10223
+  void insert_multi(safe_btree::insert_multi309,10460
+  self_type& operator=(safe_btree::operator=314,10581
+  void erase(safe_btree::erase325,10808
+  iterator erase(safe_btree::erase332,11152
+  int erase_unique(safe_btree::erase_unique337,11296
+  int erase_multi(safe_btree::erase_multi342,11426
+  btree_type* internal_btree(safe_btree::internal_btree349,11594
+  const btree_type* internal_btree(safe_btree::internal_btree350,11645
+  void clear(safe_btree::clear353,11734
+  void swap(safe_btree::swap357,11797
+  void dump(safe_btree::dump362,11899
+  void verify(safe_btree::verify365,11964
+  int64_t generation(safe_btree::generation368,12015
+  key_compare key_comp(safe_btree::key_comp371,12077
+  size_type size(safe_btree::size374,12161
+  size_type max_size(safe_btree::max_size375,12212
+  bool empty(safe_btree::empty376,12271
+  size_type height(safe_btree::height377,12319
+  size_type internal_nodes(safe_btree::internal_nodes378,12374
+  size_type leaf_nodes(safe_btree::leaf_nodes379,12445
+  size_type nodes(safe_btree::nodes380,12508
+  size_type bytes_used(safe_btree::bytes_used381,12561
+  static double average_bytes_per_value(safe_btree::average_bytes_per_value382,12624
+  double fullness(safe_btree::fullness385,12725
+  double overhead(safe_btree::overhead386,12781
+  btree_type tree_;safe_btree::tree_389,12850
+  int64_t generation_;safe_btree::generation_390,12871
+
+neo/cpp-btree/safe_btree_map.h,961
+#define UTIL_BTREE_SAFE_BTREE_MAP_H__30,1331
+namespace btree 40,1517
+template <typename Key,btree::Key43,1606
+template <typename Key, typename Value,btree::Value43,1606
+          typename Compare btree::Compare44,1647
+  typedef safe_btree_map<Key, Value, Compare, Alloc, TargetNodeSize> self_type;btree::self_type50,1939
+    Key, Value, Compare, Alloc, TargetNodeSize> params_type;btree::params_type52,2049
+  typedef safe_btree<params_type> btree_type;btree::btree_type53,2111
+  typedef btree_map_container<btree_type> super_type;btree::super_type54,2158
+  typedef typename btree_type::key_compare btree::btree_type::key_compare57,2225
+  typedef typename btree_type::allocator_type btree::btree_type::allocator_type58,2282
+template <typename K,81,2933
+template <typename K, typename V,81,2933
+template <typename K, typename V, typename C,81,2933
+template <typename K, typename V, typename C, typename A,81,2933
+inline void swap(82,2999
+
+neo/cpp-btree/safe_btree_set.h,846
+#define UTIL_BTREE_SAFE_BTREE_SET_H__31,1325
+namespace btree 40,1491
+template <typename Key,btree::Key43,1580
+          typename Compare btree::Compare44,1605
+  typedef safe_btree_set<Key, Compare, Alloc, TargetNodeSize> self_type;btree::self_type50,1868
+  typedef btree_set_params<Key, Compare, Alloc, TargetNodeSize> params_type;btree::params_type51,1942
+  typedef safe_btree<params_type> btree_type;btree::btree_type52,2020
+  typedef btree_unique_container<btree_type> super_type;btree::super_type53,2067
+  typedef typename btree_type::key_compare btree::btree_type::key_compare56,2137
+  typedef typename btree_type::allocator_type btree::btree_type::allocator_type57,2194
+template <typename K,80,2845
+template <typename K, typename C,80,2845
+template <typename K, typename C, typename A,80,2845
+inline void swap(81,2899
+
+neo/point_search.cxx,2894
+bool almostEqual(14,276
+inline int iround(41,988
+class vec244,1148
+    vec2(vec2::vec247,1169
+    vec2(vec2::vec248,1183
+    vec2 operator+(vec2::operator+50,1231
+    vec2 operator-(vec2::operator-51,1306
+    vec2 operator*(vec2::operator*53,1382
+    float x,vec2::x55,1448
+    float x, y;vec2::y55,1448
+class vec2r 59,1550
+    vec2r(vec2r::vec2r62,1586
+    vec2r(vec2r::vec2r63,1601
+    vec2r operator+(vec2r::operator+65,1669
+    vec2r operator-(vec2r::operator-66,1756
+    vec2r operator*(vec2r::operator*68,1844
+    void set_min(vec2r::set_min70,1927
+    void set_max(vec2r::set_max71,2013
+    int32_t   r;vec2r::r73,2100
+struct Pt77,2217
+    Pt(Pt::Pt79,2229
+    Pt(Pt::Pt80,2241
+    void copy(Pt::copy82,2304
+    vec2r  _pos;Pt::_pos84,2396
+    int8_t _id;Pt::_id85,2413
+struct PtCompare89,2515
+    bool operator()(PtCompare::operator()91,2534
+class Box95,2704
+    Box(Box::Box98,2724
+    void reset(Box::reset100,2783
+    void add(Box::add102,2845
+    Box divide(Box::divide113,3165
+    vec2r _min;Box::_min141,3948
+    vec2r _max;Box::_max142,3965
+enum intersect_code146,4105
+    ic_outside,intersect_code::ic_outside148,4127
+    ic_partial,intersect_code::ic_partial149,4143
+    ic_insideintersect_code::ic_inside150,4159
+class Box2d154,4259
+    Box2d(Box2d::Box2d157,4281
+    intersect_code intersect(Box2d::intersect159,4351
+    bool contains(Box2d::contains172,4727
+    vec2 _min;Box2d::_min179,4902
+    vec2 _max;Box2d::_max180,4918
+class PointSet 184,5019
+    PointSet(PointSet::PointSet187,5104
+    void add(PointSet::add190,5214
+    intptr_t nth_rank(PointSet::nth_rank206,5586
+    uint32_t        _count;PointSet::_count223,5934
+    uint32_t        _num_elems;PointSet::_num_elems224,5962
+    mutable int32_t _nth;PointSet::_nth225,5994
+    mutable int32_t _high_bound;PointSet::_high_bound226,6076
+class Octtree231,6281
+    Octtree(Octtree::Octtree234,6305
+    Octtree(Octtree::Octtree250,6768
+    ~Octtree(Octtree::~Octtree257,6931
+    void add_point(Octtree::add_point263,7021
+    int32_t subdivide(Octtree::subdivide268,7104
+    int32_t search(Octtree::search351,9752
+    uint32_t _populate(Octtree::_populate372,10394
+    uint32_t _fill(Octtree::_fill441,12749
+    unsigned char _quadrant(Octtree::_quadrant478,13927
+    int32_t _sort(Octtree::_sort483,14112
+    Octtree     *_child[Octtree::_child490,14274
+    Box          _box;Octtree::_box491,14302
+    vector<Pt>   _points;Octtree::_points492,14325
+    int32_t      _min_rank;Octtree::_min_rank493,14351
+struct SearchContext 497,14423
+class Search 500,14531
+    Search(Search::Search503,14577
+    int32_t search(Search::search509,14720
+    Octtree<const Point*> _qt;Search::_qt519,15030
+extern "C" __declspec(524,15148
+extern "C" __declspec(532,15438
+extern "C" __declspec(542,15738
+
+point_search.h,425
+struct Point16,921
+	int8_t  id;Point::id18,938
+	int32_t rank;Point::rank19,952
+	float   x;Point::x20,968
+	float   y;Point::y21,981
+struct Rect25,1120
+	float lx;Rect::lx27,1136
+	float ly;Rect::ly28,1148
+	float hx;Rect::hx29,1160
+	float hy;Rect::hy30,1172
+typedef SearchContext* (__stdcall* T_create)42,1699
+typedef int32_t (__stdcall* T_search)48,2065
+typedef SearchContext* (__stdcall* T_destroy)52,2289

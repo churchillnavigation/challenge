@@ -1,0 +1,5 @@
+LIBRARY   ADAMS
+EXPORTS
+   create=?create@@YAPEAUSearchContext@@PEBUPoint@@0@Z   @1
+   search=?search@@YAHPEAUSearchContext@@URect@@HPEAUPoint@@@Z	@2
+   destroy=?destroy@@YAPEAUSearchContext@@PEAU1@@Z	@3

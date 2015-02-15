@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LocalDebuggerCommand>c:/greg/dev_pc/apps/other/churchill/point_search</LocalDebuggerCommand>
+    <LocalDebuggerCommandArguments>neod.dll -p1000000 -q250000 -s82AC78BB-882416EB-82AC78BB-98F7503D-A964976B</LocalDebuggerCommandArguments>
+    <LocalDebuggerWorkingDirectory>c:/greg/dev_pc/apps/other/churchill/</LocalDebuggerWorkingDirectory>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <LocalDebuggerEnvironment>
+    </LocalDebuggerEnvironment>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LocalDebuggerCommand>c:/greg/dev_pc/apps/other/churchill/point_search</LocalDebuggerCommand>
+    <LocalDebuggerCommandArguments>neo.dll </LocalDebuggerCommandArguments>
+    <LocalDebuggerWorkingDirectory>c:/greg/dev_pc/apps/other/churchill/</LocalDebuggerWorkingDirectory>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <LocalDebuggerEnvironment>
+    </LocalDebuggerEnvironment>
+  </PropertyGroup>
+</Project>

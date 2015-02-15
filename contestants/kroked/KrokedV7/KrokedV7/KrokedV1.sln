@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KrokedV1", "Win32Project1\Win32Project1.vcxproj", "{5E24846F-FD3D-44A4-9089-D281BC5A3EC8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AE4D6C7D-FC07-469D-8BF0-5C42FF9DF066}"
+	ProjectSection(SolutionItems) = preProject
+		Performance1.psess = Performance1.psess
+		Performance2.psess = Performance2.psess
+		Performance3.psess = Performance3.psess
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5E24846F-FD3D-44A4-9089-D281BC5A3EC8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5E24846F-FD3D-44A4-9089-D281BC5A3EC8}.Debug|Win32.Build.0 = Debug|Win32
+		{5E24846F-FD3D-44A4-9089-D281BC5A3EC8}.Debug|x64.ActiveCfg = Debug|x64
+		{5E24846F-FD3D-44A4-9089-D281BC5A3EC8}.Debug|x64.Build.0 = Debug|x64
+		{5E24846F-FD3D-44A4-9089-D281BC5A3EC8}.Debug|x64.Deploy.0 = Debug|x64
+		{5E24846F-FD3D-44A4-9089-D281BC5A3EC8}.Release|Win32.ActiveCfg = Release|Win32
+		{5E24846F-FD3D-44A4-9089-D281BC5A3EC8}.Release|Win32.Build.0 = Release|Win32
+		{5E24846F-FD3D-44A4-9089-D281BC5A3EC8}.Release|x64.ActiveCfg = Release|x64
+		{5E24846F-FD3D-44A4-9089-D281BC5A3EC8}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,28 @@
+
+(flat_quadtree.dll) plaid.dll
+-----------------------------
+
+flat_quadtree.dll uses a quad-tree built on the implicit structure of
+IEEE754 floating-point numbers, as well as fully contiguous storage
+for all points.
+
+The quadtree has a fixed structure, with 16 levels.  A given zone in
+the quadtree is specified by a 32-bit bitstring designating the
+direction choices made at each level (2 bits per level) and a 32-bit
+mask.  Given this representation of a zone, it's a constant-time
+operation to get the bounding rectangle for the zone: the x-choices
+are treated as the leading 16 bits of the x edges, and likewise for
+the y-choices.
+
+To Build
+--------
+
+On a Windows mingw-64/msys installation, the following sequence of
+commands will produce plaid.dll as it has been submitted:
+
+$ make clean
+$ CXXFLAGS="-O3 -mavx -march=native -fvisibility=internal -DZONE_BUCKET_CAP=15000" make
+$ cp flat_quadtree.strip.dll plaid.dll
+
+
+

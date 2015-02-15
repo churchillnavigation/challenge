@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LocalDebuggerCommand>C:\Users\jmschrei\Downloads\challenge\point_search.exe</LocalDebuggerCommand>
+    <LocalDebuggerCommandArguments>-n100000 $(SolutionDir)$(Platform)\$(Configuration)\$(ProjectName).dll -s7782E256-7D0A8C06-7782E256-6DD9CAD0-5C4A0D86</LocalDebuggerCommandArguments>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LocalDebuggerCommand>C:\Users\jmschrei\Downloads\challenge\point_search.exe</LocalDebuggerCommand>
+    <LocalDebuggerCommandArguments>-q10000000 $(SolutionDir)$(Platform)\$(Configuration)\$(ProjectName).dll -s7782E256-7D0A8C06-7782E256-6DD9CAD0-5C4A0D86</LocalDebuggerCommandArguments>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+  </PropertyGroup>
+</Project>

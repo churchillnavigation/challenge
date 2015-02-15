@@ -1,0 +1,53 @@
+Seed: BDB3BB38-B73BD568-BDB3BB38-A7E893BE-967B54E8
+Breaks tree building because it generates many identical points
+(more than 64; leaf size in debug mode) so we end up in infinite
+recursion which never stops splitting.
+
+=============================================================================
+7AE3DD66-706BB336-7AE3DD66-60B8F5E0-512B32B6
+benchmark (ms)
+
+standard PQ -- leaf size near 1024
+-----------
+tree root last: 57.58, 57.09, 59.52
+tree root first: 56.68, 57.34, 57.16
+
+- better runtime @ leaf size of 3072 (~42ms)
+
+heap runtime: slightly larger than lower_bound & insert
+
+opt PQ, tree root last
+----------------------
+7125ms -- SLOWER!
+When the PQ is operating to the full capacity, AVX2 (rather unoptimized) is
+10% faster than STL PQ, as reported by test & bench.  But in real case, it
+is slower, even in single-threaded mode -- indicates that the PQ is rarely
+near the full capacity.  
+
+=============================================================================
+173641febb61356006e6b013c3cebbbf4050f38a
+
+The following test cases seem to expose a code generation bug in Release mode.
+In SecondTry.cpp, when slowResult AND snailResult are BOTH uncommented, both
+produce the same result. When only slowResult is is active, a wrong result is
+output: the PQ doesn't include the real best element; other elements are OK.
+(I.e., whether the PQ contains correct output depends only on whether snailResult
+runs. )
+
+This doesn't happen in debug mode.
+
+After custom code has been replaced with std::vector and STL algorithms,
+correct result is always produced.
+
+Point count  : 1000000
+Query count  : 1000
+Result count : 20
+Random seed  : 18ACDBDB-1224B58B-18ACDBDB-2F7F35D-3364340B
+DIFFER: probably error in PQ!
+
+Point count  : 100000
+Query count  : 1000
+Result count : 20
+Random seed  : 829C2424-88144A74-829C2424-98C70CA2-A954CBF4
+Slow and Snail differ; probably error in PQ!
+

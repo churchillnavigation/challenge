@@ -1,0 +1,7 @@
+In here you will find 3 dlls:
+    * cygwin1.dll      - cygwin dependency
+    * zoopp_hasopt.dll - project compiled with intel haswell optimizations
+    * zoopp_genopt.dll - project compiled with generic optimizations
+
+If you compile the project on the target PC you'll get more or less the same optimizations that
+zoopp_hasopt.dll has, I think.

@@ -1,0 +1,5 @@
+LIBRARY REP_MOVSD2
+EXPORTS
+	create
+	search
+	destroy=destro

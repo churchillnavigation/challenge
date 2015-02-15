@@ -1,0 +1,6 @@
+LIBRARY "single_pass.dll"
+
+EXPORTS
+    create  @1
+    destroy @2
+    search  @3

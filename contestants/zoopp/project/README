@@ -1,0 +1,14 @@
+To compile the project you need to install cygwin https://www.cygwin.com/. To be more precise,
+the things that are needed from cygwin are:
+
+    * base system
+    * gcc-g++ (tested with version 4.9.2-1)
+    * make
+
+Once installed open a cygwin terminal, cd to this folder and run 'make'. The result will be put
+inside the build folder.
+
+Since we compile with cygwin we have to deal with a dll dependency: 'cygwin1.dll'. For convenience
+it is packed inside the project and copied to the build output directory.
+
+You can find this dll under $CYGWIN_HOME/bin.

@@ -1,0 +1,21 @@
+--- Churchill Navigation Point Search Challenge ---
+Point count  : 10000000
+Query count  : 1000
+Result count : 20
+Random seed  : FFB7B0AD-F53FDEFD-FFB7B0AD-E5EC982B-D47F5F7D
+
+Loading algorithms:
+Loading D:\challenge-master\x64\Release\dizergin_no1.dll... Success.
+1 algorithms loaded.
+
+Preparing 10000000 random points...done (612.9640ms).
+Preparing 1000 random queries...done (0.0310ms).
+
+Testing algorithm #0 (dizergin_no1.dll):
+Robustness check...done.
+Loading points...done (3556.3560ms).
+Making queries...done (1669.8710ms, avg 1.6699ms/query).
+Release points...done (memory used: 365MB).
+
+Comparing the results of algorithms: There's nothing to compare to, load more DLLs!
+Cleaning up resources...done.

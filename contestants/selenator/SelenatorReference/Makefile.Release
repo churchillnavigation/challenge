@@ -1,0 +1,114 @@
+
+MAKEFILE      = Makefile.Release
+
+####### Compiler, tools and options
+
+CC            = gcc
+CXX           = g++
+DEFINES       = -DUNICODE -DSCHULTZSOFTWARESOLUTIONS_LIBRARY
+CFLAGS        = -pipe -fno-keep-inline-dllexport -O2 -Wall -Wextra $(DEFINES)
+CXXFLAGS      = -pipe -fno-keep-inline-dllexport -Ofast -march=haswell -mtune=intel -funroll-loops -mfpmath=sse -flto -O2 -frtti -Wall -Wextra -fexceptions -mthreads $(DEFINES)
+INCPATH       = -I"."
+LINKER        = g++
+LFLAGS        = -static -flto -Wl,-s -shared -mthreads -Wl,--out-implib,release\libSelenatorReference.a
+LIBS          =         
+QMAKE         = qmake.exe
+IDC           = idc
+IDL           = midl
+ZIP           = zip -r -9
+DEF_FILE      = 
+RES_FILE      = 
+COPY          = copy /y
+SED           = $(QMAKE) -install sed
+COPY_FILE     = $(COPY)
+COPY_DIR      = xcopy /s /q /y /i
+DEL_FILE      = del
+DEL_DIR       = rmdir
+MOVE          = move
+CHK_DIR_EXISTS= if not exist
+MKDIR         = mkdir
+INSTALL_FILE    = $(COPY_FILE)
+INSTALL_PROGRAM = $(COPY_FILE)
+INSTALL_DIR     = $(COPY_DIR)
+
+####### Output directory
+
+OBJECTS_DIR   = release
+
+####### Files
+
+SOURCES       = SchultzReference.cpp 
+OBJECTS       = release/SchultzReference.o
+
+DESTDIR        = release\ #avoid trailing-slash linebreak
+TARGET         = SelenatorReference.dll
+DESTDIR_TARGET = release\SelenatorReference.dll
+
+####### Implicit rules
+
+.SUFFIXES: .cpp .cc .cxx .c
+
+.cpp.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o $@ $<
+
+.cc.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o $@ $<
+
+.cxx.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o $@ $<
+
+.c.o:
+	$(CC) -c $(CFLAGS) $(INCPATH) -o $@ $<
+
+####### Build rules
+
+first: all
+all: Makefile.Release  initdir $(DESTDIR_TARGET)
+
+.PHONY: initdir
+
+initdir:
+	-$(CHK_DIR_EXISTS) $(DESTDIR) $(MKDIR) $(DESTDIR)
+
+$(DESTDIR_TARGET):  $(OBJECTS) 
+	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) $(OBJECTS)  $(LIBS)
+
+clean: compiler_clean 
+	-$(DEL_FILE) release\SchultzReference.o
+	-$(DEL_FILE) release\SelenatorReference.dll
+	-$(DEL_FILE) release\libSelenatorReference.a
+	-$(DEL_DIR) release
+
+distclean: clean 
+	-$(DEL_FILE) $(DESTDIR_TARGET)
+	-$(DEL_FILE) Makefile.Release
+
+check: first
+
+compiler_no_pch_compiler_make_all:
+compiler_no_pch_compiler_clean:
+compiler_yacc_decl_make_all:
+compiler_yacc_decl_clean:
+compiler_yacc_impl_make_all:
+compiler_yacc_impl_clean:
+compiler_lex_make_all:
+compiler_lex_clean:
+compiler_clean: 
+
+
+
+####### Compile
+
+release/SchultzReference.o: SchultzReference.cpp SchultzReference.h \
+		schultzreference_global.h \
+		point_search.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\SchultzReference.o SchultzReference.cpp
+
+####### Install
+
+install:   FORCE
+
+uninstall:   FORCE
+
+FORCE:
+

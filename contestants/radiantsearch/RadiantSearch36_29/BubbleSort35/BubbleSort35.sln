@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BubbleSort35", "BubbleSort35\BubbleSort35.vcxproj", "{3C837321-65DD-490E-B92C-69454DDF2EA2}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Launcher", "Launcher\Launcher.vcxproj", "{18A1A7E5-A9A0-4298-878C-6EDA3BA1EB55}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3C837321-65DD-490E-B92C-69454DDF2EA2}.Debug|x64.ActiveCfg = Debug|x64
+		{3C837321-65DD-490E-B92C-69454DDF2EA2}.Debug|x64.Build.0 = Debug|x64
+		{3C837321-65DD-490E-B92C-69454DDF2EA2}.Release|x64.ActiveCfg = Release|x64
+		{3C837321-65DD-490E-B92C-69454DDF2EA2}.Release|x64.Build.0 = Release|x64
+		{18A1A7E5-A9A0-4298-878C-6EDA3BA1EB55}.Debug|x64.ActiveCfg = Debug|x64
+		{18A1A7E5-A9A0-4298-878C-6EDA3BA1EB55}.Debug|x64.Build.0 = Debug|x64
+		{18A1A7E5-A9A0-4298-878C-6EDA3BA1EB55}.Release|x64.ActiveCfg = Release|x64
+		{18A1A7E5-A9A0-4298-878C-6EDA3BA1EB55}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,1 @@
+Compiled using MinGW-w64 4.9.2

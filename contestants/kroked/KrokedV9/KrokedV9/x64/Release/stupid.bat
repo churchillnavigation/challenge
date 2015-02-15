@@ -1,0 +1,1 @@
+point_search reference.dll Win32Project1.dll -p1 -q1 -r1  

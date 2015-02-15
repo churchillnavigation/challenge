@@ -1,0 +1,1 @@
+g++ -c -static -march=corei7 -fomit-frame-pointer -std=c++0x -O3 -o FastSearch.o "FastSearch.cpp"; g++ -static-libgcc -static-libstdc++ -shared -o Saber.dll FastSearch.o

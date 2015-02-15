@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LocalDebuggerCommand>C:\Users\Asus\Documents\Visual Studio 2012\Projects\Win32Project1\Debug\point_search.exe</LocalDebuggerCommand>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <LocalDebuggerCommandArguments>reference.dll Win32Project1.dll</LocalDebuggerCommandArguments>
+    <LocalDebuggerAttach>false</LocalDebuggerAttach>
+    <LocalDebuggerWorkingDirectory>C:\Users\Asus\Documents\Visual Studio 2012\Projects\Win32Project1\Debug\</LocalDebuggerWorkingDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LocalDebuggerCommand>C:\Users\Asus\Documents\Visual Studio 2012\Projects\KrokedV1\x64\Debug\point_search.exe</LocalDebuggerCommand>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <LocalDebuggerCommandArguments>point_search  KrokedV1.dll -p1000000 -q1000 -r20 -sA02E2906-AAA64756-A02E2906-BA750180-8BE6C6D6</LocalDebuggerCommandArguments>
+    <LocalDebuggerAttach>false</LocalDebuggerAttach>
+    <LocalDebuggerWorkingDirectory>C:\Users\Asus\Documents\Visual Studio 2012\Projects\KrokedV1\x64\Debug\</LocalDebuggerWorkingDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LocalDebuggerWorkingDirectory>C:\Users\Asus\Documents\Visual Studio 2012\Projects\KrokedV1\x64\Release</LocalDebuggerWorkingDirectory>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <LocalDebuggerCommand>C:\Users\Asus\Documents\Visual Studio 2012\Projects\KrokedV1\x64\Release\point_search.exe</LocalDebuggerCommand>
+    <LocalDebuggerCommandArguments>KrokedV1.dll -p10000000 -q1000000 -r20  -sB8CE1E9C-B24670CC-B8CE1E9C-A295361A-9306F14C</LocalDebuggerCommandArguments>
+  </PropertyGroup>
+</Project>
