@@ -21,8 +21,8 @@ bool CoordsInsideRectangle(const Rect &rect, float x, float y)
 
 bool PointInsideRectangle(const Rect &rect, const Point &point)
 {
-	if (rect.lx <= x && rect.hx >= x &&
-		rect.ly <= y && rect.hy >= y)
+	if (rect.lx <= point.x && rect.hx >= point.x &&
+		rect.ly <= point.y && rect.hy >= point.y)
 		return true;
 	return false;
 }
